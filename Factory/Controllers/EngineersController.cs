@@ -37,6 +37,13 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/engineers/details/{id}")]
+    public ActionResult Details(int id)
+    {
+      Engineer eng = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
+      return View(eng);
+    }
+
     [HttpGet("/engineers/edit/{id}")]
     public ActionResult Edit(int id)
     {

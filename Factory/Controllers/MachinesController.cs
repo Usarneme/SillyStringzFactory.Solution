@@ -37,6 +37,13 @@ namespace Factory.Controllers
       return RedirectToAction("Index");
     }
 
+    [HttpGet("/machines/details/{id}")]
+    public ActionResult Details(int id)
+    {
+      Machine mach = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      return View(mach);
+    }
+
     [HttpGet("/machines/edit/{id}")]
     public ActionResult Edit(int id)
     {
