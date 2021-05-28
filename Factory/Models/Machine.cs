@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -15,6 +16,8 @@ namespace Factory.Models
     public string Name { get; set; }
     [Required]
     public string Description { get; set; }
+    [Required]
+    public DateTime InstallationDate { get; set; }
     public virtual ICollection<EngineerMachine> JoinEntities { get; set; }
   }
 }

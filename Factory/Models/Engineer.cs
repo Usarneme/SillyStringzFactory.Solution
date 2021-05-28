@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
@@ -13,6 +14,8 @@ namespace Factory.Models
     public int EngineerId { get; set; }
     [Required]
     public string Name { get; set; }
+    [Required]
+    public DateTime HireDate { get; set; }
     public virtual ICollection<EngineerMachine> JoinEntities { get; set; }
   }
 }
