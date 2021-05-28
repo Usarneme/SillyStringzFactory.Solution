@@ -1,9 +1,8 @@
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
-using System.Diagnostics;
 using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
 using Factory.Models;
 
 namespace Factory.Controllers
@@ -40,7 +39,10 @@ namespace Factory.Controllers
     [HttpGet("/machines/details/{id}")]
     public ActionResult Details(int id)
     {
-      Machine mach = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      var mach = _db.Machines
+        .Include(mach => mach.JoinEntities)
+        .ThenInclude(join => join.Engineer)
+        .FirstOrDefault(mach => mach.MachineId == id);
       return View(mach);
     }
 

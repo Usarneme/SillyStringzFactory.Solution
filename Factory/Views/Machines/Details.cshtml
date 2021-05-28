@@ -13,9 +13,25 @@
     <h3>Description: @Model.Description</h3>
     <h3>Installation Date: @Model.InstallationDate.ToShortDateString()</h3>
 
+    <div class="container">
+      @if (@Model.JoinEntities.Count == 0)
+      {
+        <p>This Machine has no engineers licensed to work on it.</p>
+      }
+      else
+      {
+        <h4>Machine is able to be worked on by the following engineers:</h4>
+        <div class="container d-flex flex-column">
+          @foreach (var eng in Model.JoinEntities)
+          {
+            <div>@eng.Engineer.Name</div>
+          }
+        </div>
+      }
+    </div>
+
     @Html.ActionLink("Remove Machine", "Delete", "Machines", new { id = Model.MachineId }, new { @class = "btn btn-block btn-warning" })
     @Html.ActionLink("Edit Machine", "Edit", "Machines", new { id = Model.MachineId }, new { @class = "btn btn-block btn-primary" })
 
-    @* TODO add engineers licensed to work on section *@
   </div>
 </div>
