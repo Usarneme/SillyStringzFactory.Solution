@@ -16,17 +16,17 @@
 
         <div class="form-group">
           @Html.LabelFor(model => model.Name)
-          @Html.EditorFor(model => model.Name, "text", null, new { @required = "required" })
+          @Html.EditorFor(model => model.Name, new { htmlAttributes = new { @required = "required", @class = "form-control" } })
         </div>
 
         <div class="form-group">
           @Html.Label("Hire Date")
-          @Html.EditorFor(model => model.HireDate, "date", null, new { @type = "date", @required = "required", value = @Model.HireDate.ToShortDateString() })
+          @Html.EditorFor(model => model.HireDate, "date", @Model.HireDate.ToShortDateString(), new { htmlAttributes = new { @type = "date", @required = "required", value = @Model.HireDate.ToShortDateString(), @class = "form-control" } })
         </div>
 
         <div class="form-group">
           @Html.Label("Licensed Machines")
-          @Html.DropDownList("MachineId")
+          @Html.DropDownList("MachineId", null, new { @class = "form-control" })
         </div>
 
         <input type="submit" class="btn btn-block btn-primary" value="Save" />

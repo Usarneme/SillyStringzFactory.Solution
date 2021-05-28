@@ -61,7 +61,21 @@ html {
 body {
   /* Margin bottom by footer height */
   margin-bottom: 60px;
+  /* 61px footer including 1px border */
+  min-height: calc(100vh - 61px);
 }
+
+main, .main {
+  /* 61px footer + 57px header */
+  min-height: calc(100vh - 118px);
+  background: rgb(192, 200, 206);
+}
+
+header, nav, footer.footer, a.nav-link {
+  background: slategray;
+  color: #ffe;
+}
+
 .footer {
   position: absolute;
   bottom: 0;
@@ -72,4 +86,19 @@ body {
 
 ul, li {
   list-style-type: none;
+}
+
+.content {
+  max-width: 800px;
+  margin: auto;
+  padding: 22px;
+  padding-top: 44px;
+}
+
+h1 {
+  padding-top: 28px;
+}
+
+input {
+  padding: 3px;
 }

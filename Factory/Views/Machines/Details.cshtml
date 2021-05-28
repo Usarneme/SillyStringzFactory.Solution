@@ -13,7 +13,7 @@
     <h3>Description: @Model.Description</h3>
     <h3>Installation Date: @Model.InstallationDate.ToShortDateString()</h3>
 
-    <div class="container m-2">
+    <div class="container m-2 p-5">
       @if (@Model.JoinEntities.Count == 0)
       {
         <p>This Machine has no engineers licensed to work on it.</p>
