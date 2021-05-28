@@ -1,3 +1,5 @@
+@using Factory.Models;
+
 @{
     ViewData["Title"] = "Machines";
 }
@@ -6,7 +8,24 @@
   <div class="text-center">
     <h1 class="display-4">Machines</h1>
   </div>
+  <div class="container p-5">
+    @Html.ActionLink("Add New Machine", "Create", "Machines", null, new { @class = "btn btn-block btn-info" })
+  </div>
   <div class="container content">
-
+    @if (@Model.Count == 0)
+    {
+      <h3>No Machines have been registered yet.</h3>
+    }
+    else
+    {
+      <ul>
+      @foreach (Machine mach in Model)
+      {
+        <li>
+          @Html.ActionLink($"{mach.Name}", "Details", "Machines", new { id = mach.MachineId }, new { @class = "btn btn-block btn-primary" })
+        </li>
+      }
+      </ul>
+    }
   </div>
 </div>

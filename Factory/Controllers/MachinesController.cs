@@ -10,10 +10,17 @@ namespace Factory.Controllers
 {
   public class MachinesController : Controller
   {
+    private readonly FactoryContext _db;
+    public MachinesController(FactoryContext db)
+    {
+      _db = db;
+    }
+
     [HttpGet("/machines")]
     public ActionResult Index()
     {
-      return View();
+      List<Machine> machines = _db.Machines.ToList();
+      return View(machines);
     }
 
     [HttpGet("/machines/create")]
