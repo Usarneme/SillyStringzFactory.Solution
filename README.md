@@ -56,3 +56,11 @@ NOTE: If you have trouble accessing the website it is likely because your browse
 ### License
 
 GPLv3 - No Copyright
+
+---
+
+### Bugs
+
+No known issues at this time. Please submit a pull request/add to the issue tracker above if you find something out of place.
+
+Thanks!
