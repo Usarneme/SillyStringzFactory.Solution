@@ -57,5 +57,14 @@ namespace Factory.Controllers
       return View(eng);
     }
 
+    [HttpPost("/engineers/delete/{id}")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Engineer eng = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
+      _db.Engineers.Remove(eng);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }

@@ -56,5 +56,15 @@ namespace Factory.Controllers
       Machine mach = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
       return View(mach);
     }
+
+        [HttpPost("/machines/delete/{id}")]
+    public ActionResult DeleteConfirmed(int id)
+    {
+      Machine mach = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      _db.Machines.Remove(mach);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
   }
 }
