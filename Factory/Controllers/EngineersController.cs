@@ -1,4 +1,5 @@
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System;
 using System.Collections.Generic;
@@ -50,8 +51,20 @@ namespace Factory.Controllers
     public ActionResult Edit(int id)
     {
       Engineer eng = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
-      // ViewBag.MyMachines = _db.Machines
+      ViewBag.MachineId = new SelectList(_db.Machines, "MachineId", "Name");
       return View(eng);
+    }
+
+    [HttpPost]
+    public ActionResult Edit(Engineer eng, int MachineId)
+    {
+      if (MachineId != 0)
+      {
+        _db.EngineerMachines.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = eng.EngineerId});
+      }
+      _db.Entry(eng).State = EntityState.Modified;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
     }
 
     [HttpGet("/engineers/delete/{id}")]

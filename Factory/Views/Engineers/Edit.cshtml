@@ -1,12 +1,36 @@
+@model Factory.Models.Engineer;
+
 @{
     ViewData["Title"] = "Engineers";
 }
 
 <div class="container">
   <div class="text-center">
-    <h1 class="display-4">Engineers - Edit</h1>
+    <h1 class="display-4">Engineers - Edit - @Model.Name</h1>
   </div>
   <div class="container content">
+    <div class="form-container d-flex flex-column">
+      @using (Html.BeginForm())
+      {
+        @Html.HiddenFor(model => model.EngineerId)
 
+        <div class="form-group">
+          @Html.LabelFor(model => model.Name)
+          @Html.EditorFor(model => model.Name, "text", null, new { @required = "required" })
+        </div>
+
+        <div class="form-group">
+          @Html.Label("Hire Date")
+          @Html.EditorFor(model => model.HireDate, "date", null, new { @type = "date", @required = "required", value = @Model.HireDate.ToShortDateString() })
+        </div>
+
+        <div class="form-group">
+          @Html.Label("Licensed Machines")
+          @Html.DropDownList("MachineId")
+        </div>
+
+        <input type="submit" class="btn btn-block btn-primary" value="Save" />
+      }
+    </div>
   </div>
 </div>
