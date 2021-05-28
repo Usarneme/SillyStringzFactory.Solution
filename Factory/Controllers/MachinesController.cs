@@ -10,10 +10,28 @@ namespace Factory.Controllers
 {
   public class MachinesController : Controller
   {
+    [HttpGet("/machines")]
     public ActionResult Index()
     {
       return View();
     }
 
+    [HttpGet("/machines/create")]
+    public ActionResult Create()
+    {
+      return View();
+    }
+
+    [HttpGet("/machines/edit/{id}")]
+    public ActionResult Edit(int id)
+    {
+      return View();
+    }
+
+    [HttpGet("/machines/delete/{id}")]
+    public ActionResult Delete(int id)
+    {
+      return View();
+    }
   }
 }
