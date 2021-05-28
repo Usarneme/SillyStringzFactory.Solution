@@ -53,7 +53,8 @@ namespace Factory.Controllers
     [HttpGet("/machines/delete/{id}")]
     public ActionResult Delete(int id)
     {
-      return View();
+      Machine mach = _db.Machines.FirstOrDefault(mach => mach.MachineId == id);
+      return View(mach);
     }
   }
 }

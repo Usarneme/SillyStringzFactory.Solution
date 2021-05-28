@@ -1,3 +1,5 @@
+@model Factory.Models.Engineer;
+
 @{
     ViewData["Title"] = "Engineers";
 }
@@ -7,6 +9,11 @@
     <h1 class="display-4">Engineers - Delete</h1>
   </div>
   <div class="container content">
-
+    <h3>Are you sure you want to delete "@Model.Name"?</h3>
+    @using (Html.BeginForm())
+    {
+      @Html.Hidden("id", @Model.EngineerId)
+      <input type="submit" value="Permanently Delete" class="btn btn-block btn-danger" />
+    }
   </div>
 </div>

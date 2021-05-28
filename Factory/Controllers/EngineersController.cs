@@ -53,7 +53,8 @@ namespace Factory.Controllers
     [HttpGet("/engineers/delete/{id}")]
     public ActionResult Delete(int id)
     {
-      return View();
+      Engineer eng = _db.Engineers.FirstOrDefault(eng => eng.EngineerId == id);
+      return View(eng);
     }
 
   }
