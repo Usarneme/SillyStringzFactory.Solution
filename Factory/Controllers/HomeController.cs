@@ -16,6 +16,7 @@ namespace Factory.Controllers
       _db = db;
     }
 
+    [HttpGet("/")]
     public ActionResult Index()
     {
       ViewBag.Engineers = _db.Engineers.ToList();
@@ -23,5 +24,13 @@ namespace Factory.Controllers
       return View();
     }
 
+    [HttpPost("/remove_license/{EngineerMachineId}")]
+    public ActionResult RemoveAssociation(int EngineerMachineId)
+    {
+      EngineerMachine enMa = _db.EngineerMachines.FirstOrDefault(enMa => enMa.EngineerMachineId == EngineerMachineId);
+      _db.EngineerMachines.Remove(enMa);
+      _db.SaveChanges();
+      return Content("ok", "application/json");
+    }
   }
 }

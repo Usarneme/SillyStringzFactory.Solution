@@ -24,7 +24,10 @@
         <div class="container d-flex flex-column">
           @foreach (var eng in Model.JoinEntities)
           {
-            <div>@eng.Engineer.Name</div>
+            <div class="row align-items-center mt-2 border-bottom">
+              <button class="col-sm-5 btn btn-danger remove-association-button" id="@eng.EngineerMachineId">Remove Repair License</button>
+              <span class="col-sm-7">@eng.Engineer.Name</span>
+            </div>
           }
         </div>
       }
