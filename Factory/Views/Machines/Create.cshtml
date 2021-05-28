@@ -1,12 +1,29 @@
+@model Factory.Models.Machine;
+
 @{
     ViewData["Title"] = "Machines";
 }
 
 <div class="container">
   <div class="text-center">
-    <h1 class="display-4">Machines - Create</h1>
+    <h1 class="display-4">Machines - Add New</h1>
   </div>
   <div class="container content">
+    <div class="form-container d-flex flex-column">
+      @using (Html.BeginForm())
+      {
+        <div class="form-group">
+          @Html.Label("Machine Name")
+          @Html.TextBoxFor(model => model.Name, new { @required = "required" })
+        </div>
 
+        <div class="form-group">
+          @Html.Label("Installation Date")
+          @Html.TextBoxFor(model => model.InstallationDate, new { @type = "date", @required = "required" })
+        </div>
+
+        <input type="submit" value="Add Machine" class="btn btn-block btn-primary" />
+      }
+    </div>
   </div>
 </div>
