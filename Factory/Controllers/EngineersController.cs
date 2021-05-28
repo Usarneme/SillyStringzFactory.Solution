@@ -58,7 +58,9 @@ namespace Factory.Controllers
     [HttpPost]
     public ActionResult Edit(Engineer eng, int MachineId)
     {
-      if (MachineId != 0)
+      var enMa = _db.EngineerMachines.FirstOrDefault(enMa => enMa.EngineerId == eng.EngineerId && enMa.MachineId == MachineId);
+      // Prevent the same license from being applied more than once to an engineer
+      if (MachineId != 0 && enMa == null)
       {
         _db.EngineerMachines.Add(new EngineerMachine() { MachineId = MachineId, EngineerId = eng.EngineerId});
       }
