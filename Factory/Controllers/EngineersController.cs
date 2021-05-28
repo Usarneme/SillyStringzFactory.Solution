@@ -29,6 +29,14 @@ namespace Factory.Controllers
       return View();
     }
 
+    [HttpPost("/engineers/create")]
+    public ActionResult Create(Engineer eng)
+    {
+      _db.Engineers.Add(eng);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
     [HttpGet("/engineers/edit/{id}")]
     public ActionResult Edit(int id)
     {

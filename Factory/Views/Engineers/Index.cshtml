@@ -18,14 +18,14 @@
     }
     else
     {
-      <ul>
+      <div class="container d-flex flex-column">
       @foreach (Engineer eng in Model)
       {
-        <li>
+        <div class="p-2 m-2">
           @Html.ActionLink($"{eng.Name}", "Details", "Engineers", new { id = eng.EngineerId }, new { @class = "btn btn-block btn-primary" })
-        </li>
+        </div>
       }
-      </ul>
+      </div>
     }
   </div>
 </div>

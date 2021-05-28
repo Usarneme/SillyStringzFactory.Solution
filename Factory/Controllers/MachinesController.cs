@@ -29,6 +29,14 @@ namespace Factory.Controllers
       return View();
     }
 
+    [HttpPost("/machines/create")]
+    public ActionResult Create(Machine mach)
+    {
+      _db.Machines.Add(mach);
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
     [HttpGet("/machines/edit/{id}")]
     public ActionResult Edit(int id)
     {

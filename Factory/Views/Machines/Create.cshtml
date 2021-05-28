@@ -18,6 +18,11 @@
         </div>
 
         <div class="form-group">
+          @Html.Label("Machine Description")
+          @Html.TextBoxFor(model => model.Description, new { @required = "required" })
+        </div>
+
+        <div class="form-group">
           @Html.Label("Installation Date")
           @Html.TextBoxFor(model => model.InstallationDate, new { @type = "date", @required = "required" })
         </div>
